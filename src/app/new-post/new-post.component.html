@@ -1,0 +1,31 @@
+<div class="p-2">
+    <div class="mt-5">
+        <h2>New Post</h2>
+    </div>
+    <div class="row mt-4">
+       <div class="col-8">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" #title >
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Picture</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" #picture >
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #description></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Detail</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" #detail></textarea>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="button" (click)="goBack()"  class="btn btn-sm btn-confix btn-outline-primary text-dark border-dark rounded-0">Close</button>
+            <button type="button" (click)="add(title.value, picture.value, description.value, detail.value); title.value=''; picture.value=''; description.value=''; detail.value=''"  pic class="btn btn-sm btn-outline-primary text-dark border-dark rounded-0">Submit</button>
+        </div>
+        </div>
+       <div class="col-4"></div>
+    </div>
+</div>
+
