@@ -13,10 +13,24 @@
                         <button type="button" routerLinkActive="active" routerLink="/newposts" class="btn btn-outline-primary text-dark border-dark rounded-0">
                             <a class="text-decoration-none text-dark" >New Posts</a>
                         </button>
+                        <button type="button" (click)="openModal(template)" routerLinkActive="active" routerLink="/login" class="btn btn-outline-primary text-dark border-dark rounded-0">
+                            <a class="text-decoration-none text-dark" >{{status}}</a>
+                        </button>
                       </div>
                 </div>
             </div>
         </div>
     </div>
     <router-outlet></router-outlet>
+    <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Edit Post</h4>
+          <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-reactive-form></app-reactive-form>
+        </div>
+    </ng-template>
 </div>

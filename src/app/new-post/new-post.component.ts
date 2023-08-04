@@ -1,7 +1,9 @@
 import { Location } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
-import { PostsService } from '../posts.service';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
+import { PostsService } from '../posts.service';
 import { Posts } from '../posts';
 
 @Component({
@@ -13,10 +15,18 @@ export class NewPostComponent implements OnInit {
 
   post: Posts[] = [];
 
+  rfContact = this.fb.group({
+    title:['', Validators.required],
+    picture: [''],
+    description:['', Validators.required],
+    detail: ['', Validators.required],
+  })
+
   constructor(
     private route: ActivatedRoute,
     private postsService: PostsService,
-    private location: Location
+    private location: Location,
+    private fb: FormBuilder,
   ){}
   
   ngOnInit(): void {
@@ -36,13 +46,14 @@ export class NewPostComponent implements OnInit {
       alert("Chưa nhập đủ các trường bắt buộc")
       return
     }
-    const newPosts: Posts = new Posts();
-    newPosts.title = title;
-    newPosts.picture = picture;
-    newPosts.description = description;
-    newPosts.detail = detail;
-    this.postsService.addPost(newPosts).subscribe(newPosts => {
+    this.postsService.addPost({title, picture, description, detail} as Posts).subscribe(newPosts => {
       this.post.push(newPosts)
+    })
+  }
+  onSubmit() {
+    this.postsService.addPost(this.rfContact.value as Posts).subscribe(newPosts => {
+      this.post.push(newPosts)
+      this.goBack()
     })
   }
 

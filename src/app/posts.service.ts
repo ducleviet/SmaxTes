@@ -29,26 +29,32 @@ export class PostsService {
     const url = `${this.postsUrl}/${id}`;
     return this.http.get<Posts>(url).pipe(
       tap(selectPost => console.log(`selectPost = ${JSON.stringify(selectPost)}`)),
-      catchError(error => of(new Posts()))
+      catchError(error => of()),
     )
   }
   updatedPost(post: Posts, id: number): Observable<any>{
     const url = `${this.postsUrl}/${id}`;
     return this.http.put(url, post, this.httpOptions).pipe(
       tap(updatedPost => console.log(`updated post = ${JSON.stringify(updatedPost)}`)),
-      catchError(error => of(new Posts()))
+      catchError(error => of())
     )
   }
 
   addPost(post: Posts): Observable<Posts> {
     return this.http.post<Posts>(this.postsUrl, post, this.httpOptions).pipe(
       tap((post: Posts) =>console.log(`post = ${JSON.stringify(post)}`)),
-      catchError(erro => of(new Posts()))
+      catchError(erro => of())
     )
   }
   login(account: any): Observable<any>{
     const url = "https://appmovie.onrender.com/user/api/login"
     return this.http.post(url, account, this.httpOptions)
+  }
+  loggedIn() {
+    return !!localStorage.getItem("user")
+  }
+  getAccount() {
+    return localStorage.getItem("user")
   }
 
 }

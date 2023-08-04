@@ -4,16 +4,17 @@ import { PostsComponent } from './posts/posts.component';
 import { PostsDetailComponent } from './posts-detail/posts-detail.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { NewPostComponent } from './new-post/new-post.component';
-import { uiPrivateGuard } from './ui-private.guard';
-import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+
+import { ReactiveFormComponent } from './login/reactive-form.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/posts', pathMatch: 'full' },
   {path: 'posts', component: PostsComponent},
   {path: 'posts/:id', component: PostsDetailComponent},
   // {path: 'edit-post/:id', component: EditPostComponent},
-  {path: 'newposts', component: NewPostComponent, canActivate:[uiPrivateGuard]},
-  {path: 'test', component: ReactiveFormComponent},
+  {path: 'newposts', component: NewPostComponent, canActivate:[authGuard]},
+  // {path: 'login', component: ReactiveFormComponent},
 ];
 
 @NgModule({
