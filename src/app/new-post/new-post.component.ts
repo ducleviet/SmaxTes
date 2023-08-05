@@ -37,19 +37,19 @@ export class NewPostComponent implements OnInit {
     this.location.back();
   }
 
-  add(title: string, picture: string, description: string, detail: string): void {
-    title = title.trim();
-    picture = picture.trim();
-    detail = detail.trim();
-    description = description.trim();
-    if(!title && !detail && !description) {
-      alert("Chưa nhập đủ các trường bắt buộc")
-      return
-    }
-    this.postsService.addPost({title, picture, description, detail} as Posts).subscribe(newPosts => {
-      this.post.push(newPosts)
-    })
-  }
+  // add(title: string, picture: string, description: string, detail: string): void {
+  //   title = title.trim();
+  //   picture = picture.trim();
+  //   detail = detail.trim();
+  //   description = description.trim();
+  //   if(!title && !detail && !description) {
+  //     alert("Chưa nhập đủ các trường bắt buộc")
+  //     return
+  //   }
+  //   this.postsService.addPost({title, picture, description, detail} as Posts).subscribe(newPosts => {
+  //     this.post.push(newPosts)
+  //   })
+  // }
   onSubmit() {
     this.postsService.addPost(this.rfContact.value as Posts).subscribe(newPosts => {
       this.post.push(newPosts)

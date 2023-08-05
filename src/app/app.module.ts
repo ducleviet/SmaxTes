@@ -9,12 +9,13 @@ import { PostsDetailComponent } from './posts-detail/posts-detail.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NewPostComponent } from './new-post/new-post.component';
-import { ReactiveFormComponent } from './login/reactive-form.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TooltipModule} from 'ngx-bootstrap/tooltip'
 import{ModalModule} from 'ngx-bootstrap/modal'
 import { AccountInterceptorService } from './account-interceptor.service';
 import { PostsService } from './posts.service';
+import { ReactiveFormComponent } from './login/reactive-form.component';
 
 @NgModule({
   declarations: [

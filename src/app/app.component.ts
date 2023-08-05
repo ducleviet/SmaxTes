@@ -33,5 +33,5 @@ export class AppComponent {
       return
     }
     this.modalRef = this.modalService.show(template, this.config);
-  } 
+  }
 }

@@ -11,6 +11,7 @@ export class AccountInterceptorService implements HttpInterceptor{
   constructor(private injector: Injector) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
     let postsServce = this.injector.get(PostsService)  
     let accountzedReq= req.clone({
         setHeaders: {
